@@ -11,10 +11,11 @@ public class Train {
         this.arrivalStation = arrivalStation;
     }
 
+
     public String getArrivalStation() {
         return arrivalStation;
     }
-    public void setArrivalStation(java.lang.String arrivalStation) {
+    public void setArrivalStation(String arrivalStation) {
         this.arrivalStation = arrivalStation;
     }
 
