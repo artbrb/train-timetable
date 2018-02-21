@@ -1,14 +1,16 @@
 package com.artbrb.timetable;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrainTimetable {
 
-    public List<Train> trains;
+    public ArrayList<Train> trains;
 
     public void addNewTrain(String trainName, String departureTime, String arrivalStation) {
-
+        final String name = trainName;
+        Train name = new Train(trainName, departureTime, arrivalStation);
     }
 
     public void deleteTrain(String trainName) {
