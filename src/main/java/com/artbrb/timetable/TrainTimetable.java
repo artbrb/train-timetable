@@ -2,23 +2,27 @@ package com.artbrb.timetable;
 
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TrainTimetable {
-
-    public ArrayList<Train> trains;
+    Map<String, Train> trainHashMap = new HashMap<String, Train>();
+    Map<String, ArrayList<String>> stationHashMap = new HashMap<String, ArrayList<String>>();
 
     public void addNewTrain(String trainName, String departureTime, String arrivalStation) {
-        final String name = trainName;
-        Train name = new Train(trainName, departureTime, arrivalStation);
+        Train newTrain = new Train(trainName, departureTime, arrivalStation);
+        trainHashMap.put(trainName, newTrain);
     }
 
-    public void deleteTrain(String trainName) {
+    public void deleteTrain(String stationName, String trainName) {
 
     }
 
     public void addIntermediateSttion(String trainName, String stationName) {
-
+        if (stationHashMap.containsKey(stationName)) {
+            stationHashMap.containsKey(stationName);
+        }
     }
 
     public void deleteIntermediateStation(String trainName, String stationName) {
