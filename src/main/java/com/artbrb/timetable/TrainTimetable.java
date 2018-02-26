@@ -1,5 +1,6 @@
 package com.artbrb.timetable;
 
+import java.sql.Time;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +22,10 @@ public class TrainTimetable {
 
     public void addIntermediateSttion(String trainName, String stationName) {
         if (stationHashMap.containsKey(stationName)) {
-            stationHashMap.containsKey(stationName);
+            stationHashMap.get(stationName).add(trainName);
+        } else {
+            ArrayList<String> list = new ArrayList<String>();
+            stationHashMap.put(trainName, list);
         }
     }
 
@@ -29,8 +33,7 @@ public class TrainTimetable {
 
     }
 
-    public void findNearestTrain(String stationName, Instant time) {
-
+    public void findNearestTrain(String stationName, Time time) {
     }
 
 }
