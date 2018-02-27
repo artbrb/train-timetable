@@ -35,5 +35,4 @@ public class TrainTimetable {
 
     public void findNearestTrain(String stationName, Time time) {
     }
-
 }
