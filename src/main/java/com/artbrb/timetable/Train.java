@@ -1,11 +1,15 @@
 package com.artbrb.timetable;
 
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Train {
     private String name;
-    private String departureTime;
+    private Instant departureTime;
     private String arrivalStation;
 
-    public Train (String name, String departureTime, String arrivalStation) {
+    public Train (String name, Instant departureTime, String arrivalStation) {
         this.name = name;
         this.departureTime = departureTime;
         this.arrivalStation = arrivalStation;
@@ -15,23 +19,24 @@ public class Train {
     public String getArrivalStation() {
         return arrivalStation;
     }
+
     public void setArrivalStation(String arrivalStation) {
         this.arrivalStation = arrivalStation;
     }
 
-
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-
-    public String getDepartureTime() {
+    public Instant getDepartureTime() {
         return departureTime;
     }
-    public void setDepartureTime(String departureTime) {
+
+    public void setDepartureTime(Instant departureTime) {
         this.departureTime = departureTime;
     }
 }
