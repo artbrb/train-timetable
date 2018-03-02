@@ -1,8 +1,6 @@
 package com.artbrb.timetable;
 
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Train {
     private String name;
