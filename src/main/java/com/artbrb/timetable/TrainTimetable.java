@@ -43,7 +43,10 @@ public class TrainTimetable {
             throw new Exception("Train does not exist");
         }
         if (stationMap.containsKey(stationName)) {
-            stationMap.get(stationName).add(trainName);
+            List<String> trains = stationMap.get(stationName);
+            if (!trains.contains(trainName)) {
+                trains.add(trainName);
+            }
         } else {
             List<String> list = new ArrayList<>();
             list.add(trainName);

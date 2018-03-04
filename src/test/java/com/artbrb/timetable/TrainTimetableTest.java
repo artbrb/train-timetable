@@ -54,6 +54,7 @@ public class TrainTimetableTest {
 
         // when
         timetable.addIntermediateStation(intermediateStation, trainName);
+        timetable.addIntermediateStation(intermediateStation, trainName);
 
         // then
         Assert.assertEquals(2, timetable.getStationMap().size());
