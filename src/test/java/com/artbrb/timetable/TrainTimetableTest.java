@@ -10,7 +10,8 @@ public class TrainTimetableTest {
     private static String trainName = "Express train";
     private static String secondTrainName = "Slow train";
     private static Instant nearestDepartureTime = Instant.now().plusSeconds(1000);
-    private static Instant departureTime = Instant.now().plusSeconds(10000);
+    private static Instant departureTime1 = Instant.now().plusSeconds(10000);
+    private static Instant departureTime2 = Instant.now().minusSeconds(100);
     private static String arrivalStation = "Moscow";
     private static String intermediateStation = "London";
 
@@ -20,7 +21,7 @@ public class TrainTimetableTest {
         TrainTimetable timetable = new TrainTimetable();
 
         // when
-        timetable.addNewTrain(trainName, departureTime, arrivalStation);
+        timetable.addNewTrain(trainName, departureTime1, arrivalStation);
 
         // then
         Train train = timetable.getTrainMap().get(trainName);
@@ -28,14 +29,14 @@ public class TrainTimetableTest {
         Assert.assertEquals(1, timetable.getStationMap().size());
         Assert.assertEquals(trainName, train.getName());
         Assert.assertEquals(arrivalStation, train.getArrivalStation());
-        Assert.assertEquals(departureTime, train.getDepartureTime());
+        Assert.assertEquals(departureTime1, train.getDepartureTime());
     }
 
     @Test
     public void testDeleteTrain() throws Exception {
         // given
         TrainTimetable timetable = new TrainTimetable();
-        timetable.addNewTrain(trainName, departureTime, arrivalStation);
+        timetable.addNewTrain(trainName, departureTime1, arrivalStation);
 
         // when
         timetable.deleteTrain(trainName);
@@ -49,7 +50,7 @@ public class TrainTimetableTest {
     public void testAddIntermediateStation() throws Exception {
         // given
         TrainTimetable timetable = new TrainTimetable();
-        timetable.addNewTrain(trainName, departureTime, arrivalStation);
+        timetable.addNewTrain(trainName, departureTime1, arrivalStation);
 
         // when
         timetable.addIntermediateStation(intermediateStation, trainName);
@@ -64,7 +65,7 @@ public class TrainTimetableTest {
     public void testDeleteIntermediateStation() throws Exception {
         // given
         TrainTimetable timetable = new TrainTimetable();
-        timetable.addNewTrain(trainName, departureTime, arrivalStation);
+        timetable.addNewTrain(trainName, departureTime1, arrivalStation);
         timetable.addIntermediateStation(intermediateStation, trainName);
 
         // when
@@ -77,16 +78,30 @@ public class TrainTimetableTest {
     }
 
     @Test
-    public void testFindNearestTrain() throws Exception {
+    public void testFindNearestTrain_1() throws Exception {
         // given
         TrainTimetable timetable = new TrainTimetable();
         timetable.addNewTrain(trainName, nearestDepartureTime, arrivalStation);
-        timetable.addNewTrain(secondTrainName, departureTime, arrivalStation);
+        timetable.addNewTrain(secondTrainName, departureTime1, arrivalStation);
 
         // when
         String nearestTrain = timetable.findNearestTrain(arrivalStation);
 
         // then
+        Assert.assertEquals(trainName, nearestTrain);
+    }
+
+    @Test
+    public void testFindNearestTrain_2() throws Exception {
+        // given
+        TrainTimetable timetable = new TrainTimetable();
+        timetable.addNewTrain(trainName, nearestDepartureTime, arrivalStation);
+        timetable.addNewTrain(secondTrainName, departureTime2, arrivalStation);
+
+        // when
+        String nearestTrain = timetable.findNearestTrain(arrivalStation);
+
+        //then
         Assert.assertEquals(trainName, nearestTrain);
     }
 }
