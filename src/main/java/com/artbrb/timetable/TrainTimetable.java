@@ -12,11 +12,15 @@ public class TrainTimetable {
     private Map<String, List<String>> stationMap = new HashMap<>();
 
     public Map<String, Train> getTrainMap(){
-        return trainMap;
+        Map<String, Train> copyTrainMap = new HashMap<>();
+        copyTrainMap.putAll(trainMap);
+        return copyTrainMap;
     }
 
     public Map<String, List<String>> getStationMap() {
-        return stationMap;
+        Map<String, List<String>> copyStationMap = new HashMap<>();
+        copyStationMap.putAll(stationMap);
+        return copyStationMap;
     }
 
     public void addNewTrain(String trainName, Instant departureTime, String arrivalStation) throws Exception {
@@ -38,9 +42,9 @@ public class TrainTimetable {
         }
     }
 
-    public void addIntermediateStation(String stationName, String trainName) throws Exception {
+    public void addIntermediateStation(String stationName, String trainName) throws IllegalAccessException {
         if (!isTrainExist(trainName)) {
-            throw new Exception("Train does not exist");
+            throw  new IllegalAccessException("Train does not exist");
         }
         if (stationMap.containsKey(stationName)) {
             List<String> trains = stationMap.get(stationName);
@@ -79,7 +83,7 @@ public class TrainTimetable {
         }
 
         if (nearestTrainName.isEmpty()) {
-            throw new Exception("No train for you");
+            throw new IllegalAccessException("No train for you");
         }
         return nearestTrainName;
     }
