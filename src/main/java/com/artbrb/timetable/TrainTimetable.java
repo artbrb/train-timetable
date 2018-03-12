@@ -12,15 +12,11 @@ public class TrainTimetable {
     private Map<String, List<String>> stationMap = new HashMap<>();
 
     public Map<String, Train> getTrainMap(){
-        Map<String, Train> copyTrainMap = new HashMap<>();
-        copyTrainMap.putAll(trainMap);
-        return copyTrainMap;
+        return new HashMap<>(trainMap);
     }
 
     public Map<String, List<String>> getStationMap() {
-        Map<String, List<String>> copyStationMap = new HashMap<>();
-        copyStationMap.putAll(stationMap);
-        return copyStationMap;
+        return new HashMap<>(stationMap);
     }
 
     public void addNewTrain(String trainName, Instant departureTime, String arrivalStation) throws Exception {
