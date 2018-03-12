@@ -1,9 +1,10 @@
 package com.artbrb.timetable;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.Instant;
+
+import static org.junit.Assert.*;
 
 public class TrainTimetableTest {
 
@@ -25,11 +26,11 @@ public class TrainTimetableTest {
 
         // then
         Train train = timetable.getTrainMap().get(trainName);
-        Assert.assertEquals(1, timetable.getTrainMap().size());
-        Assert.assertEquals(1, timetable.getStationMap().size());
-        Assert.assertEquals(trainName, train.getName());
-        Assert.assertEquals(arrivalStation, train.getArrivalStation());
-        Assert.assertEquals(departureTime1, train.getDepartureTime());
+        assertEquals(1, timetable.getTrainMap().size());
+        assertEquals(1, timetable.getStationMap().size());
+        assertEquals(trainName, train.getName());
+        assertEquals(arrivalStation, train.getArrivalStation());
+        assertEquals(departureTime1, train.getDepartureTime());
     }
 
     @Test
@@ -42,8 +43,8 @@ public class TrainTimetableTest {
         timetable.deleteTrain(trainName);
 
         // then
-        Assert.assertFalse(timetable.getTrainMap().containsKey(trainName));
-        Assert.assertEquals(0, timetable.getStationMap().size());
+        assertFalse(timetable.getTrainMap().containsKey(trainName));
+        assertEquals(0, timetable.getStationMap().size());
     }
 
     @Test
@@ -57,8 +58,8 @@ public class TrainTimetableTest {
         timetable.addIntermediateStation(intermediateStation, trainName);
 
         // then
-        Assert.assertEquals(2, timetable.getStationMap().size());
-        Assert.assertTrue(timetable.getStationMap().get(intermediateStation).contains(trainName));
+        assertEquals(2, timetable.getStationMap().size());
+        assertTrue(timetable.getStationMap().get(intermediateStation).contains(trainName));
 
     }
 
@@ -73,9 +74,9 @@ public class TrainTimetableTest {
         timetable.deleteIntermediateStation(trainName, intermediateStation);
 
         // then
-        Assert.assertTrue(timetable.getTrainMap().containsKey(trainName));
-        Assert.assertEquals(1, timetable.getStationMap().size());
-        Assert.assertTrue(!timetable.getStationMap().containsKey(intermediateStation));
+        assertTrue(timetable.getTrainMap().containsKey(trainName));
+        assertEquals(1, timetable.getStationMap().size());
+        assertTrue(!timetable.getStationMap().containsKey(intermediateStation));
     }
 
     @Test
@@ -89,7 +90,7 @@ public class TrainTimetableTest {
         String nearestTrain = timetable.findNearestTrain(arrivalStation);
 
         // then
-        Assert.assertEquals(trainName, nearestTrain);
+        assertEquals(trainName, nearestTrain);
     }
 
     @Test
@@ -103,6 +104,6 @@ public class TrainTimetableTest {
         String nearestTrain = timetable.findNearestTrain(arrivalStation);
 
         //then
-        Assert.assertEquals(trainName, nearestTrain);
+        assertEquals(trainName, nearestTrain);
     }
 }
